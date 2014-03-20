@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>AddMaterials</Text>
+    <Description>Some description for AddMaterials</Description>
+    <Assembly>AddMaterials.dll</Assembly>
+    <FullClassName>AddMaterials.Command</FullClassName>
+    <ClientId>a9ec88c8-33a3-4a4d-bb91-e0cb54623b34</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
