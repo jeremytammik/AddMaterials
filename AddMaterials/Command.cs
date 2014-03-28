@@ -14,6 +14,12 @@ namespace AddMaterials
   [Transaction( TransactionMode.Manual )]
   public class Command : IExternalCommand
   {
+    const string _not_available = "N/A";
+
+    const string _input_file_name = "C:/RevitAPI/MaterialList.xlsx";
+
+    //const string _input_file_name = "Z:/a/doc/revit/blog/zip/MaterialList.xlsx";
+
     static string PluralSuffix( int i )
     {
       return 1 == i ? "" : "s";
@@ -54,10 +60,8 @@ namespace AddMaterials
 
         excel.Visible = false;
 
-        string filename = "C:/RevitAPI/MaterialList.xlsx";
-
         Excel.Workbook workbook = excel.Workbooks.Open(
-          filename, 0, true, 5, "", "", true,
+          _input_file_name, 0, true, 5, "", "", true,
           Excel.XlPlatform.xlWindows, "\t", false,
           false, 0, true, 1, 0 );
 
@@ -67,7 +71,7 @@ namespace AddMaterials
         Excel.Range range = worksheet.UsedRange;
 
         int nRows = 0;
-        int nMaterialAdded = 0;
+        List<string> materials_added = new List<string>();
 
         int iRow = 5;
 
@@ -90,7 +94,7 @@ namespace AddMaterials
               string surPattern = (string) range.Cells[iRow, 9].Value2;
               string cutPattern = (string) range.Cells[iRow, 10].Value2;
 
-              // Identity data of material class to duplicate
+              // Identity data of material class to duplicate.
 
               string CSI = (string) range.Cells[iRow, 11].Value2;
 
@@ -111,13 +115,20 @@ namespace AddMaterials
                 myMaterial.Transparency
                   = (int) transparency;
 
-                myMaterial.SurfacePatternId
-                  = fillPatterns[surPattern].Id;
+                if( 0 < surPattern.Length
+                  && !surPattern.Equals( _not_available ) )
+                {
+                  myMaterial.SurfacePatternId
+                    = fillPatterns[surPattern].Id;
+                }
 
-                myMaterial.CutPatternId
-                  = fillPatterns[cutPattern].Id;
-
-                ++nMaterialAdded;
+                if( 0 < cutPattern.Length
+                  && !cutPattern.Equals( _not_available ) )
+                {
+                  myMaterial.CutPatternId
+                    = fillPatterns[cutPattern].Id;
+                }
+                materials_added.Add( matName );
               }
             }
             ++nRows;
@@ -129,14 +140,23 @@ namespace AddMaterials
         workbook.Close( true, null, null );
         excel.Quit();
 
-        TaskDialog.Show(
-          "Revit AddMaterials",
-          string.Format(
-            "{0} row{1} successfully parsed and "
-            + "{0} material{1} added.",
-            nRows, PluralSuffix( nRows ),
-            nMaterialAdded,
-            PluralSuffix( nMaterialAdded ) ) );
+        int n = materials_added.Count;
+
+        string msg = string.Format(
+          "{0} row{1} successfully parsed and "
+          + "{2} material{3} added:",
+          nRows, PluralSuffix( nRows ),
+          n, PluralSuffix( n ) );
+
+        TaskDialog dlg = new TaskDialog( 
+          "Revit AddMaterials" );
+        
+        dlg.MainInstruction = msg;
+
+        dlg.MainContent = string.Join( ", ",
+          materials_added ) + ".";
+
+        dlg.Show();
 
         return Result.Succeeded;
       }
@@ -150,3 +170,5 @@ namespace AddMaterials
     }
   }
 }
+
+// Z:\a\rvt\add_material_csi_03.rvt
