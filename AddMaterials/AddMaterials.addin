@@ -9,4 +9,13 @@
     <VendorId>TBC_</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>
+  <AddIn Type="Command">
+    <Text>AddMaterials Fill Pattern benchmark</Text>
+    <Description>Some description for AddMaterials</Description>
+    <Assembly>AddMaterials.dll</Assembly>
+    <FullClassName>AddMaterials.FillPatternBenchmarkCommand</FullClassName>
+    <ClientId>ff23fb73-8f11-4c93-b867-9a599a73dd53</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
 </RevitAddIns>

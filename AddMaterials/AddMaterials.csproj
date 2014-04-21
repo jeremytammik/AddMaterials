@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="FillPatternBenchmarkCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -76,6 +77,8 @@
     </Compile>
     <Compile Include="ViewModel\Enum\Status.cs" />
     <Compile Include="ViewModel\Events\DialogCloseEventArgs.cs" />
+    <Compile Include="ViewModel\FillPatternsViewModel.cs" />
+    <Compile Include="ViewModel\FillPatternViewModel.cs" />
     <Compile Include="ViewModel\MaterialBrowserViewModel.cs" />
     <Compile Include="ViewModel\MaterialViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -88,6 +91,9 @@
     <Compile Include="View\Converters\InversedStatusToErrorSignVisibilityConverter.cs" />
     <Compile Include="View\Converters\StatusToErrorMessageConverter.cs" />
     <Compile Include="View\Converters\StatusToErrorSignVisibilityConverter.cs" />
+    <Compile Include="View\FillPatternsView.xaml.cs">
+      <DependentUpon>FillPatternsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MaterialsView.xaml.cs">
       <DependentUpon>MaterialsView.xaml</DependentUpon>
     </Compile>
@@ -139,6 +145,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\FillPatternsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MaterialsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,7 +160,7 @@
     <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2014\AddMaterials.dll" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)AddMaterials.addin" "$(AppData)\Autodesk\REVIT\Addins\2014"
-copy "$(ProjectDir)bin\debug\AddMaterials.dll" "$(AppData)\Autodesk\REVIT\Addins\2014"</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)AddMaterials.addin" "$(AppData)\Autodesk\REVIT\Addins\2015"
+copy "$(ProjectDir)bin\debug\AddMaterials.dll" "$(AppData)\Autodesk\REVIT\Addins\2015"</PostBuildEvent>
   </PropertyGroup>
 </Project>

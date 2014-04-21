@@ -36,5 +36,7 @@ using System.Runtime.InteropServices;
 // 2014-03-29 2014.0.0.1 error message and reporting enhancements
 // 2014-04-02 2014.0.0.2 usability enhancements by Alexander Ignatovich
 // 2014-04-20 2015.0.0.2 migrated to Revit 2015
-[assembly: AssemblyVersion( "2015.0.0.2" )]
-[assembly: AssemblyFileVersion( "2015.0.0.2" )]
+// 2014-04-20 2015.0.0.3 integrated Victor Chekalin fill pattern viewer benchmark
+//
+[assembly: AssemblyVersion( "2015.0.0.3" )]
+[assembly: AssemblyFileVersion( "2015.0.0.3" )]

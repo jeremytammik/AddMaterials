@@ -1,0 +1,53 @@
+﻿<Window x:Class="AddMaterials.View.FillPatternsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"             
+             xmlns:ViewModel="clr-namespace:AddMaterials.ViewModel"
+             xmlns:Controls="clr-namespace:AddMaterials.View.Controls"
+             xmlns:Converters="clr-namespace:AddMaterials.View.Converters"
+             xmlns:Properties="clr-namespace:AddMaterials.Properties"
+             mc:Ignorable="d" 
+             Width="300"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Converters:BitmapToImageSourceConverter x:Key="bitmapToImageSourceConverter" />
+            <Converters:StatusToErrorSignVisibilityConverter x:Key="statusToErrorSignVisibilityConverter" />
+            <Converters:InversedStatusToErrorSignVisibilityConverter x:Key="inversedStatusToErrorSignVisibilityConverter" />
+            <Converters:StatusToErrorMessageConverter x:Key="statusToErrorMessageConverter" />
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <ListView ItemsSource="{Binding FillPatterns}">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Pattern Name" 
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Surface"
+                          Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate DataType
+                                ="{x:Type ViewModel:FillPatternViewModel}">
+
+                                <Border CornerRadius="2" 
+                                    BorderThickness="1" 
+                                    BorderBrush="Gray">
+
+                                    <Controls:FillPatternViewerControlWpf 
+                                        HorizontalAlignment="Stretch"
+                                        Height="30"
+                                        Margin="1,3" 
+                                        FillPattern="{Binding FillPattern}"/>
+
+                                </Border>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

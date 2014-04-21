@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms.VisualStyles;
 using Autodesk.Revit.DB;
 using Image = System.Drawing.Image;
 using Matrix = System.Drawing.Drawing2D.Matrix;
@@ -27,8 +28,9 @@ namespace AddMaterials.View.Controls
           typeof( FillPatternViewerControlWpf ),
           new UIPropertyMetadata( null,
             OnFillPatternChanged ) );
+    
 
-    private static void OnFillPatternChanged(
+      private static void OnFillPatternChanged(
       DependencyObject d,
       DependencyPropertyChangedEventArgs e )
     {
@@ -132,6 +134,8 @@ namespace AddMaterials.View.Controls
 
     private void DrawFillPattern( Graphics g )
     {
+        Stopwatch sw = Stopwatch.StartNew();
+
       float matrixScale;
 
       var fillPattern = FillPattern;
@@ -274,6 +278,12 @@ namespace AddMaterials.View.Controls
               new PointF( 200, 0 ) );
           }
         }
+        sw.Stop();
+        g.ResetTransform();
+#if DEBUG
+        g.DrawString(string.Format("{0} ms", sw.ElapsedMilliseconds), System.Drawing.SystemFonts.DefaultFont, Brushes.Red, 0, 0);
+#endif
+
       }
       catch( Exception ex )
       {
