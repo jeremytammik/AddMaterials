@@ -14,3 +14,5 @@ http://thebuildingcoder.typepad.com/blog/2014/03/adding-new-materials-from-list-
 http://thebuildingcoder.typepad.com/blog/2014/04/wpf-fill-pattern-viewer-control.html
 
 http://thebuildingcoder.typepad.com/blog/2014/04/getting-serious-adding-new-materials-from-list.html
+
+http://thebuildingcoder.typepad.com/blog/2014/04/wpf-fill-pattern-viewer-control-benchmark.html
