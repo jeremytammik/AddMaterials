@@ -28,11 +28,11 @@ namespace AddMaterials.View.Controls
           typeof( FillPatternViewerControlWpf ),
           new UIPropertyMetadata( null,
             OnFillPatternChanged ) );
-    
 
-      private static void OnFillPatternChanged(
-      DependencyObject d,
-      DependencyPropertyChangedEventArgs e )
+
+    private static void OnFillPatternChanged(
+    DependencyObject d,
+    DependencyPropertyChangedEventArgs e )
     {
       var fillPatternViewerControl
         = d as FillPatternViewerControlWpf;
@@ -134,7 +134,7 @@ namespace AddMaterials.View.Controls
 
     private void DrawFillPattern( Graphics g )
     {
-        Stopwatch sw = Stopwatch.StartNew();
+      Stopwatch sw = Stopwatch.StartNew();
 
       float matrixScale;
 
@@ -278,10 +278,15 @@ namespace AddMaterials.View.Controls
               new PointF( 200, 0 ) );
           }
         }
+
         sw.Stop();
         g.ResetTransform();
+
 #if DEBUG
-        g.DrawString(string.Format("{0} ms", sw.ElapsedMilliseconds), System.Drawing.SystemFonts.DefaultFont, Brushes.Red, 0, 0);
+        g.DrawString( string.Format( "{0} ms",
+          sw.ElapsedMilliseconds ),
+          System.Drawing.SystemFonts.DefaultFont,
+          Brushes.Red, 0, 0 );
 #endif
 
       }
