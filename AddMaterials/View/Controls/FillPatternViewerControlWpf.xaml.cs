@@ -352,11 +352,11 @@ namespace AddMaterials.View.Controls
       System.Drawing.Point p2, 
       Rectangle r )
     {
-      return LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y ) ) ||
-        LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ) ) ||
-        LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y + r.Height ) ) ||
-        LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y ) ) ||
-        ( r.Contains( p1 ) && r.Contains( p2 ) );
+      return LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y ) ) 
+        || LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ) ) 
+        || LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y + r.Height ) ) 
+        || LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y ) ) 
+        || ( r.Contains( p1 ) && r.Contains( p2 ) );
     }
 
     private bool LineIntersectsLine( 
