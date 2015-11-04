@@ -48,11 +48,11 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2015\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2016\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2015\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2016\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -160,7 +160,7 @@
     <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2014\AddMaterials.dll" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)AddMaterials.addin" "$(AppData)\Autodesk\REVIT\Addins\2015"
-copy "$(ProjectDir)bin\debug\AddMaterials.dll" "$(AppData)\Autodesk\REVIT\Addins\2015"</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)AddMaterials.addin" "$(AppData)\Autodesk\REVIT\Addins\2016"
+copy "$(ProjectDir)bin\debug\AddMaterials.dll" "$(AppData)\Autodesk\REVIT\Addins\2016"</PostBuildEvent>
   </PropertyGroup>
 </Project>

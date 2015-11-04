@@ -21,8 +21,9 @@ namespace AddMaterials
 
     //const string _input_file_name = "C:/RevitAPI/MaterialList.xlsx";
     //private const string _input_file_name = "C:/tmp/MaterialList.xlsx";
-
-    const string _input_file_name = "Z:/a/doc/revit/blog/zip/MaterialList.xlsx";
+    //const string _input_file_name = "Z:/a/doc/revit/blog/zip/MaterialList.xlsx";
+    
+    const string _input_file_name = "Z:/a/doc/revit/tbc/zip/MaterialList.xlsx";
 
     private static string PluralSuffix( int i )
     {
@@ -192,3 +193,5 @@ namespace AddMaterials
 }
 
 // Z:\a\rvt\add_material_csi_03.rvt
+// Z:\a\rvt\fill_pattern_viewer.rvt
+

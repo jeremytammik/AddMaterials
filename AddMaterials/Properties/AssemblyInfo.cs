@@ -39,6 +39,7 @@ using System.Runtime.InteropServices;
 // 2014-04-20 2015.0.0.3 integrated fill pattern viewer benchmark
 // 2015-11-04 2015.0.0.4 updated FillPatternViewerControlWpf.xaml.cs, merged pull request #1 by @kfpopeye
 // 2015-11-04 2015.0.0.5 updated FillPatternViewerControlWpf.xaml.cs, merged pull request #3 by @kfpopeye
+// 2015-11-04 2016.0.0.0 tested and migrated to Revit 2016
 //
-[assembly: AssemblyVersion( "2015.0.0.5" )]
-[assembly: AssemblyFileVersion( "2015.0.0.5" )]
+[assembly: AssemblyVersion( "2016.0.0.0" )]
+[assembly: AssemblyFileVersion( "2016.0.0.0" )]
