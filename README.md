@@ -10,7 +10,7 @@ For more information, please refer to [The Building Coder](http://thebuildingcod
 - [WPF FillPattern viewer control](http://thebuildingcoder.typepad.com/blog/2014/04/wpf-fill-pattern-viewer-control.html)
 - [Check for already loaded materials](http://thebuildingcoder.typepad.com/blog/2014/04/getting-serious-adding-new-materials-from-list.html)
 - [FillPattern viewer benchmarking](http://thebuildingcoder.typepad.com/blog/2014/04/wpf-fill-pattern-viewer-control-benchmark.html)
-
+- [Fill Pattern Viewer Fix and Add Materials for 2016](http://thebuildingcoder.typepad.com/blog/2015/11/fill-pattern-viewer-fix-and-add-materials-2016.html)
 
 ## Authors
 
