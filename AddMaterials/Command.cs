@@ -70,7 +70,6 @@ namespace AddMaterials
         if( !materialsToAdd.Any() )
           return Result.Cancelled;
 
-
         using( var tx = new Transaction( doc ) )
         {
           tx.Start( "Add Materials" );
