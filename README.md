@@ -4,7 +4,7 @@ Revit add-in to add materials from a list of properties defined in Excel.
 
 For more information, please refer to [The Building Coder](http://thebuildingcoder.typepad.com):
 
-- [Origin implementation for Revit 2011](http://thebuildingcoder.typepad.com/blog/2010/08/add-new-materials-from-list.html#2)
+- [Original implementation for Revit 2011](http://thebuildingcoder.typepad.com/blog/2010/08/add-new-materials-from-list.html#2)
 - [Reimplementation for Revit 2014](http://thebuildingcoder.typepad.com/blog/2014/03/adding-new-materials-from-list-updated.html)
 - [Improved error messages and reporting](http://thebuildingcoder.typepad.com/blog/2014/03/adding-new-materials-from-list-updated-again.html)
 - [WPF FillPattern viewer control](http://thebuildingcoder.typepad.com/blog/2014/04/wpf-fill-pattern-viewer-control.html)
