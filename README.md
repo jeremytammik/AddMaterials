@@ -12,9 +12,14 @@ For more information, please refer to [The Building Coder](http://thebuildingcod
 - [FillPattern viewer benchmarking](http://thebuildingcoder.typepad.com/blog/2014/04/wpf-fill-pattern-viewer-control-benchmark.html)
 
 
-## Author
+## Authors
 
-Jeremy Tammik,
+- Jinsol Kim
+- Luke
+- Victor Checkalin, Виктор Чекалин
+- Alexander Ignatovich, Александр Игнатович
+- [@kfpopeye](https://github.com/kfpopeye)
+- Jeremy Tammik,
 [The Building Coder](http://thebuildingcoder.typepad.com) and
 [The 3D Web Coder](http://the3dwebcoder.typepad.com),
 [ADN](http://www.autodesk.com/adn)
