@@ -16,7 +16,7 @@ For more information, please refer to [The Building Coder](http://thebuildingcod
 
 - Jinsol Kim
 - Luke
-- Victor Checkalin, Виктор Чекалин
+- Victor Chekalin, Виктор Чекалин
 - Alexander Ignatovich, Александр Игнатович
 - [@kfpopeye](https://github.com/kfpopeye)
 - Jeremy Tammik,
