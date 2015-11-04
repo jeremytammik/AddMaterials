@@ -14,7 +14,8 @@ namespace AddMaterials.View.Controls
   /// <summary>
   /// Interaction logic for FillPatternViewerControlWpf.xaml
   /// </summary>
-  public partial class FillPatternViewer : INotifyPropertyChanged
+  public partial class FillPatternViewerControlWpf 
+    : INotifyPropertyChanged
   {
     private const float Scale = 50;
     private const float LENGTH = 100;
@@ -26,22 +27,23 @@ namespace AddMaterials.View.Controls
         = DependencyProperty.RegisterAttached( 
           "FillPattern",
           typeof( FillPattern ),
-          typeof( FillPatternViewer ),
-          new UIPropertyMetadata( null, OnFillPatternChanged ) );
+          typeof( FillPatternViewerControlWpf ),
+          new UIPropertyMetadata( null, 
+            OnFillPatternChanged ) );
 
     private static void OnFillPatternChanged(
       DependencyObject d,
       DependencyPropertyChangedEventArgs e )
     {
-      var fillPatternViewerControl
-        = d as FillPatternViewer;
+      var FillPatternViewerControlWpfControl
+        = d as FillPatternViewerControlWpf;
 
-      if( fillPatternViewerControl == null ) return;
+      if( FillPatternViewerControlWpfControl == null ) return;
 
-      fillPatternViewerControl.OnPropertyChanged(
-          "FillPattern" );
+      FillPatternViewerControlWpfControl.OnPropertyChanged(
+        "FillPattern" );
 
-      fillPatternViewerControl.CreateFillPatternImage();
+      FillPatternViewerControlWpfControl.CreateFillPatternImage();
     }
 
     public FillPattern FillPattern
@@ -58,15 +60,15 @@ namespace AddMaterials.View.Controls
     }
 
     public FillPattern GetFillPattern(
-        DependencyObject obj )
+      DependencyObject obj )
     {
       return (FillPattern) obj.GetValue(
         FillPatternProperty );
     }
 
     public void SetFillPattern(
-        DependencyObject obj,
-        FillPattern value )
+      DependencyObject obj,
+      FillPattern value )
     {
       obj.SetValue( FillPatternProperty, value );
     }
@@ -77,7 +79,7 @@ namespace AddMaterials.View.Controls
       CreateFillPatternImage();
     }
 
-    public FillPatternViewer()
+    public FillPatternViewerControlWpf()
     {
       InitializeComponent();
     }
@@ -93,7 +95,8 @@ namespace AddMaterials.View.Controls
       if( handler != null )
       {
         handler( this,
-          new PropertyChangedEventArgs( propertyName ) );
+          new PropertyChangedEventArgs( 
+            propertyName ) );
       }
     }
 
@@ -109,16 +112,16 @@ namespace AddMaterials.View.Controls
 
     private void CreateFillPatternImage()
     {
-      var width =
-        ( ActualWidth == 0 ? Width : ActualWidth ) == 0
+      var width 
+        = ( ActualWidth == 0 ? Width : ActualWidth ) == 0
           ? 100
           : ( ActualWidth == 0 ? Width : ActualWidth );
 
       if( double.IsNaN( width ) )
         width = 100;
 
-      var height =
-        ( ActualHeight == 0 ? Height : ActualHeight ) == 0
+      var height 
+        = ( ActualHeight == 0 ? Height : ActualHeight ) == 0
           ? 30
           : ( ActualHeight == 0 ? Height : ActualHeight );
 
@@ -131,8 +134,8 @@ namespace AddMaterials.View.Controls
       using( var g = Graphics.FromImage(
         fillPatternImg ) )
       {
-        var rect = new Rectangle( 0, 0,
-          (int) width, (int) height );
+        var rect = new Rectangle( 
+          0, 0, (int) width, (int) height );
         g.FillRectangle( Brushes.White, rect );
         DrawFillPattern( g );
       }
@@ -148,10 +151,10 @@ namespace AddMaterials.View.Controls
       if( fillPattern == null )
         return;
 
-      if( fillPattern.Target == FillPatternTarget.Model )  //check segment density here?
+      if( fillPattern.Target == FillPatternTarget.Model )
         matrixScale = Scale;
       else
-        matrixScale = Scale * 100;
+        matrixScale = Scale * 10;
 
       try
       {
@@ -174,11 +177,11 @@ namespace AddMaterials.View.Controls
         var viewRect = new Rectangle( 
           0, 0, (int) width, (int) height );
 
-        var centerX = ( viewRect.Left + viewRect.Left
-          + viewRect.Width ) / 2;
+        var centerX = ( viewRect.Left 
+          + viewRect.Left + viewRect.Width ) / 2;
 
-        var centerY = ( viewRect.Top + viewRect.Top
-          + viewRect.Height ) / 2;
+        var centerY = ( viewRect.Top 
+          + viewRect.Top + viewRect.Height ) / 2;
 
         g.TranslateTransform( centerX, centerY );
 
@@ -203,8 +206,7 @@ namespace AddMaterials.View.Controls
 
         foreach( var fillGrid in fillGrids )
         {
-          var degreeAngle 
-            = (float) RadianToGradus( fillGrid.Angle );
+          var degreeAngle = (float) RadianToGradus( fillGrid.Angle );
           Debug.Print( new string( '-', 50 ) );
           Debug.Print( "Origin: U:{0} V:{1}", 
             fillGrid.Origin.U, fillGrid.Origin.V );
@@ -231,10 +233,8 @@ namespace AddMaterials.View.Controls
             {
               Debug.Print( "\t\t{0}", segment );
             }
-
             dashLength = pen.DashPattern.Sum();
           }
-
           g.ResetTransform();
           var rotateMatrix = new Matrix();
           rotateMatrix.Rotate( degreeAngle );
@@ -252,11 +252,12 @@ namespace AddMaterials.View.Controls
           backMatrix.Translate( offset, 0 );
           Debug.Print( "Offset: {0}", offset );
 
+
           bool moving_forward = true;
           bool moving_back = true;
           int safety = 500;
           double alternator = 0;
-          while( moving_forward || moving_back )    //draw segments shifting and offsetting each time
+          while( moving_forward || moving_back ) // draw segments shifting and offsetting each time
           {
             Debug.Write( "*" );
             var rectF1 = new RectangleF( 
@@ -267,7 +268,8 @@ namespace AddMaterials.View.Controls
               matrix, viewRect ) )
             {
               g.Transform = matrix;
-              g.DrawLine( pen, new PointF( 0, 0 ), new PointF( LENGTH, 0 ) );
+              g.DrawLine( pen, new PointF( 0, 0 ), 
+                new PointF( LENGTH, 0 ) );
             }
             else
             {
@@ -315,9 +317,9 @@ namespace AddMaterials.View.Controls
         g.ResetTransform();
 
 #if DEBUG
-        g.DrawString( string.Format( "{0} ms", 
-          sw.ElapsedMilliseconds ), 
-          System.Drawing.SystemFonts.DefaultFont,
+        g.DrawString( string.Format( 
+          "{0} ms", sw.ElapsedMilliseconds ), 
+          System.Drawing.SystemFonts.DefaultFont, 
           Brushes.Red, 0, 0 );
 #endif
 
@@ -333,18 +335,14 @@ namespace AddMaterials.View.Controls
       }
     }
 
-    public bool LineIntersectsRect( 
-      Matrix rayMatrix, 
-      Rectangle r )
+    public bool LineIntersectsRect( Matrix rayMatrix, Rectangle r )
     {
       Matrix m = rayMatrix.Clone();
       m.Translate( 200, 0 );
       return LineIntersectsRect(
-        new System.Drawing.Point( 
-          (int) rayMatrix.OffsetX, 
+        new System.Drawing.Point( (int) rayMatrix.OffsetX, 
           (int) rayMatrix.OffsetY ),
-        new System.Drawing.Point( 
-          (int) m.OffsetX, 
+        new System.Drawing.Point( (int) m.OffsetX, 
           (int) m.OffsetY ),
         r );
     }
@@ -354,11 +352,11 @@ namespace AddMaterials.View.Controls
       System.Drawing.Point p2, 
       Rectangle r )
     {
-      return LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y ) ) 
-        || LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ) ) 
-        || LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y + r.Height ) ) 
-        || LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y ) ) 
-        || ( r.Contains( p1 ) && r.Contains( p2 ) );
+      return LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y ) ) ||
+        LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y ), new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ) ) ||
+        LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X + r.Width, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y + r.Height ) ) ||
+        LineIntersectsLine( p1, p2, new System.Drawing.Point( r.X, r.Y + r.Height ), new System.Drawing.Point( r.X, r.Y ) ) ||
+        ( r.Contains( p1 ) && r.Contains( p2 ) );
     }
 
     private bool LineIntersectsLine( 
@@ -367,30 +365,42 @@ namespace AddMaterials.View.Controls
       System.Drawing.Point l2p1, 
       System.Drawing.Point l2p2 )
     {
-      Int64 d = ( l1p2.X - l1p1.X ) * ( l2p2.Y - l2p1.Y ) - ( l1p2.Y - l1p1.Y ) * ( l2p2.X - l2p1.X );
-      if( d == 0 ) return false;
+      try
+      {
+        Int64 d = ( l1p2.X - l1p1.X ) * ( l2p2.Y - l2p1.Y ) - ( l1p2.Y - l1p1.Y ) * ( l2p2.X - l2p1.X );
+        if( d == 0 ) return false;
 
-      Int64 q = ( l1p1.Y - l2p1.Y ) * ( l2p2.X - l2p1.X ) - ( l1p1.X - l2p1.X ) * ( l2p2.Y - l2p1.Y );
-      Int64 r = q / d;
+        Int64 q = ( l1p1.Y - l2p1.Y ) * ( l2p2.X - l2p1.X ) - ( l1p1.X - l2p1.X ) * ( l2p2.Y - l2p1.Y );
+        Int64 r = q / d;
 
-      Int64 q1 = (Int64) ( l1p1.Y - l2p1.Y ) * (Int64) ( l1p2.X - l1p1.X );
-      Int64 q2 = (Int64) ( l1p1.X - l2p1.X ) * (Int64) ( l1p2.Y - l1p1.Y );
+        Int64 q1 = (Int64) ( l1p1.Y - l2p1.Y ) * (Int64) ( l1p2.X - l1p1.X );
+        Int64 q2 = (Int64) ( l1p1.X - l2p1.X ) * (Int64) ( l1p2.Y - l1p1.Y );
 
-      q = q1 - q2;
-      Int64 s = q / d;
+        q = q1 - q2;
+        Int64 s = q / d;
 
-      if( r < 0 || r > 1 || s < 0 || s > 1 )
+        if( r < 0 || r > 1 || s < 0 || s > 1 )
+          return false;
+
+        return true;
+      }
+      catch( OverflowException err )
+      {
+        Debug.Print( "----------------------------------" );
+        Debug.Print( err.Message );
+        Debug.Print( l1p1.ToString() );
+        Debug.Print( l1p2.ToString() );
+        Debug.Print( l2p1.ToString() );
+        Debug.Print( l2p2.ToString() );
         return false;
-
-      return true;
+      }
     }
 
-    private double GetDistance( 
-      PointF point1, 
-      PointF point2 )
+    private double GetDistance( PointF point1, PointF point2 )
     {
-      //pythagorean theorem c^2 = a^2 + b^2
-      //thus c = square root(a^2 + b^2)
+      // Pythagorean theorem c^2 = a^2 + b^2
+      // thus c = square root(a^2 + b^2)
+
       double a = (double) ( point2.X - point1.X );
       double b = (double) ( point2.Y - point1.Y );
 
