@@ -225,7 +225,7 @@ namespace AddMaterials.View.Controls
           if( segments.Count > 0 )
           {
             pen.DashPattern = segments
-              .Select( Convert.ToSingle )
+              .Select(s => Math.Max(float.Epsilon, Convert.ToSingle(s)) )
               .ToArray();
 
             Debug.Print( "\tSegments:" );
