@@ -40,6 +40,7 @@ using System.Runtime.InteropServices;
 // 2015-11-04 2015.0.0.4 updated FillPatternViewerControlWpf.xaml.cs, merged pull request #1 by @kfpopeye
 // 2015-11-04 2015.0.0.5 updated FillPatternViewerControlWpf.xaml.cs, merged pull request #3 by @kfpopeye
 // 2015-11-04 2016.0.0.0 tested and migrated to Revit 2016
+// 2019-06-07 2016.0.0.1 integrated pull request #4 by @ridespirals -- handle 0 or negative DashPatterns
 //
-[assembly: AssemblyVersion( "2016.0.0.0" )]
-[assembly: AssemblyFileVersion( "2016.0.0.0" )]
+[assembly: AssemblyVersion( "2016.0.0.1" )]
+[assembly: AssemblyFileVersion( "2016.0.0.1" )]
