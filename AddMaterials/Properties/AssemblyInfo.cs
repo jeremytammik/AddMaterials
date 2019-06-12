@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "Autodesk Inc." )]
 [assembly: AssemblyProduct( "Revit AddMaterials Add-In" )]
-[assembly: AssemblyCopyright( "Copyright 2014 � Jeremy Tammik Autodesk Inc." )]
+[assembly: AssemblyCopyright( "Copyright 2014 © Jeremy Tammik Autodesk Inc." )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
@@ -42,6 +42,7 @@ using System.Runtime.InteropServices;
 // 2015-11-04 2016.0.0.0 tested and migrated to Revit 2016
 // 2019-06-07 2016.0.0.1 integrated pull request #4 by @ridespirals -- handle 0 or negative DashPatterns
 // 2019-06-12 2020.0.0.0 flat migration to Revit 2020
+// 2019-06-12 2020.0.0.1 implemented suggestion by Александр Пекшев: Replace FillPattern = "{Binding CutPattern}" with FillPattern = "{Binding CutPattern, IsAsync=True}" and drawing thumbnails can get even faster
 //
-[assembly: AssemblyVersion( "2020.0.0.0" )]
-[assembly: AssemblyFileVersion( "2020.0.0.0" )]
+[assembly: AssemblyVersion( "2020.0.0.1" )]
+[assembly: AssemblyFileVersion( "2020.0.0.1" )]
