@@ -82,12 +82,12 @@ namespace AddMaterials
             myMaterial.Transparency = (int) materialViewModel.Transparency;
             if( materialViewModel.SurfacePattern != null )
             {
-              myMaterial.SurfacePatternId
+              myMaterial.SurfaceForegroundPatternId
                 = fillPatterns[materialViewModel.SurfacePattern.Name].Id;
             }
             if( materialViewModel.CutPattern != null )
             {
-              myMaterial.CutPatternId
+              myMaterial.CutForegroundPatternId
                 = fillPatterns[materialViewModel.CutPattern.Name].Id;
             }
           }
