@@ -81,11 +81,15 @@ namespace AddMaterials
             myMaterial.Color = materialViewModel.Color;
             myMaterial.Transparency = (int) materialViewModel.Transparency;
             if( materialViewModel.SurfacePattern != null )
-              myMaterial.SurfacePatternId 
+            {
+              myMaterial.SurfacePatternId
                 = fillPatterns[materialViewModel.SurfacePattern.Name].Id;
+            }
             if( materialViewModel.CutPattern != null )
-              myMaterial.CutPatternId 
+            {
+              myMaterial.CutPatternId
                 = fillPatterns[materialViewModel.CutPattern.Name].Id;
+            }
           }
           tx.Commit();
         }
